@@ -165,6 +165,7 @@ bool TrueBoolArray::get(int index){
             return get_bit_7(this->bitfield[true_index]);
             break;
     }
+    throw std::runtime_error("Unkown error happened (probably memory corruption)");
 }
 void TrueBoolArray::set(int index, bool new_value){
     if (index < 0 || index >= this->size){
