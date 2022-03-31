@@ -2,8 +2,10 @@
 
 #include "TrueBool.h"
 #include <stdlib.h>
+#include <stdexcept>
 
 TrueBoolArray::TrueBoolArray(int size){
+    this->size = size;
     int true_size = size/8;
     if (size % 8 != 0) true_size++;
 
@@ -11,6 +13,34 @@ TrueBoolArray::TrueBoolArray(int size){
     for (int i = 0; i < true_size; i++){
         this->bitfield[i] = 0;
     }
+}
+
+TrueBoolArray::TrueBoolArray(int size, bool initial){
+    this->size = size;
+    int true_size = size/8;
+    if (size % 8 != 0) true_size++;
+
+    this->bitfield = new bitf[true_size];
+    for (int i = 0; i < true_size; i++){
+        this->bitfield[i] = initial * 255;
+    }
+}
+
+void TrueBoolArray::resize(int new_size){
+    int true_size = new_size/8, old_true_size = this->size/8;
+    if (new_size % 8 != 0) true_size++;
+    if (this->size % 8 != 0) old_true_size++;
+
+    bitf* new_field = new bitf[true_size];
+    for (int i = 0; i < std::min(old_true_size, true_size); i++){
+        new_field[i] = this->bitfield[i];
+    }
+    for (int i = old_true_size; i < true_size; i++){
+        new_field[i] = 0;
+    }
+    this->size = new_size;
+    delete[] this->bitfield;
+    this->bitfield = new_field;
 }
 
 bool TrueBoolArray::get_bit_0(bitf field){
@@ -97,74 +127,87 @@ void TrueBoolArray::set_bit_7(bitf& field, bool new_value){
 }
 
 bool TrueBoolArray::get(int index){
+    if (index < 0 || index >= this->size){
+        throw std::out_of_range("Index outside of range while trying to retrieve data");
+    }
+
     int eight = 8;
     int true_index, bit_place;
     true_index = index / eight;
     bit_place = index % eight;
     //div_t division = div(index, 8);
 
-    bitf current = this->bitfield[true_index];
+    //bitf current = this->bitfield[true_index];
 
     switch (bit_place){
         case 0:
-            return get_bit_0(current);
+            return get_bit_0(this->bitfield[true_index]);
             break;
         case 1:
-            return get_bit_1(current);
+            return get_bit_1(this->bitfield[true_index]);
             break;
         case 2:
-            return get_bit_2(current);
+            return get_bit_2(this->bitfield[true_index]);
             break;
         case 3:
-            return get_bit_3(current);
+            return get_bit_3(this->bitfield[true_index]);
             break;
         case 4:
-            return get_bit_4(current);
+            return get_bit_4(this->bitfield[true_index]);
             break;
         case 5:
-            return get_bit_5(current);
+            return get_bit_5(this->bitfield[true_index]);
             break;
         case 6:
-            return get_bit_6(current);
+            return get_bit_6(this->bitfield[true_index]);
             break;
         case 7:
-            return get_bit_7(current);
+            return get_bit_7(this->bitfield[true_index]);
             break;
     }
 }
 void TrueBoolArray::set(int index, bool new_value){
+    if (index < 0 || index >= this->size){
+        throw std::out_of_range("Index outside of range while trying to set data");
+    }
     int eight = 8;
     int true_index, bit_place;
     true_index = index / eight;
     bit_place = index % eight;
     //div_t division = div(index, 8);
 
-    bitf current = this->bitfield[true_index];
+    //bitf current = this->bitfield[true_index];
 
     switch (bit_place){
         case 0:
-            set_bit_0(current, new_value);
+            set_bit_0(this->bitfield[true_index], new_value);
             break;
         case 1:
-            set_bit_1(current, new_value);
+            set_bit_1(this->bitfield[true_index], new_value);
             break;
         case 2:
-            set_bit_2(current, new_value);
+            set_bit_2(this->bitfield[true_index], new_value);
             break;
         case 3:
-            set_bit_3(current, new_value);
+            set_bit_3(this->bitfield[true_index], new_value);
             break;
         case 4:
-            set_bit_4(current, new_value);
+            set_bit_4(this->bitfield[true_index], new_value);
             break;
         case 5:
-            set_bit_5(current, new_value);
+            set_bit_5(this->bitfield[true_index], new_value);
             break;
         case 6:
-            set_bit_6(current, new_value);
+            set_bit_6(this->bitfield[true_index], new_value);
             break;
         case 7:
-            set_bit_7(current, new_value);
+            set_bit_7(this->bitfield[true_index], new_value);
             break;
     }
 }
+
+TrueBoolArray::~TrueBoolArray(){
+    delete[] this->bitfield;
+}
+
+#include "TrueBoolTests.hpp"

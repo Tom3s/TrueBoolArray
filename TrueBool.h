@@ -5,8 +5,8 @@ typedef unsigned char bitf;
 class TrueBoolArray {
     private:
         bitf* bitfield;
+        int size;
         
-        void resize();
         bool get_bit_0(bitf field);
         bool get_bit_1(bitf field);
         bool get_bit_2(bitf field);
@@ -25,6 +25,8 @@ class TrueBoolArray {
         void set_bit_7(bitf& field, bool new_value);
     public:
         TrueBoolArray(int size);
+        TrueBoolArray(int new_size, bool initial_value);
+        void resize(int new_size);
         bool get(int index);
         void set(int index, bool new_value);
         ~TrueBoolArray();
