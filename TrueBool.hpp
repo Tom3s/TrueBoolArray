@@ -43,6 +43,10 @@ void TrueBoolArray::resize(int new_size){
     this->bitfield = new_field;
 }
 
+int TrueBoolArray::get_size(){
+    return this->size;
+}
+
 bool TrueBoolArray::get_bit_0(bitf field){
     return (field % 2 == 1);
 }

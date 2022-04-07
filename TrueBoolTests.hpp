@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <iostream>
+#include <chrono>
 
 void __prime_sieve_test(){
     TrueBoolArray array = TrueBoolArray(1024, true);
@@ -24,8 +25,9 @@ void __prime_sieve_test(){
     }
 
     for (int i = 0; i < 1024; i++){
-        if (array.get(i)) std::cout << i << std::endl;
+        if (array.get(i)) std::cout << i <<  "  " << std::flush;
     }
+    std::cout << std::endl;
 }
 
 void __resize_test(){
@@ -88,8 +90,29 @@ void __resize_test(){
     }
 }
 
+using namespace std::chrono;
+#define clock high_resolution_clock::now
+
+
+void __capacity_test(){
+    TrueBoolArray array = TrueBoolArray(1000000000);
+
+    auto start_time = clock();
+    for (int i = 0; i < 1000000000; i += 2){
+        array.set(i, true);
+    }
+    for (int i = 0; i < 1000000000; i += 2){
+        assert(array.get(i) == true);
+        assert(array.get(i + 1) == false);
+    }
+    auto stop_time = clock();
+    int ms = duration_cast<milliseconds>(stop_time - start_time).count();
+
+    std::cout << "Initialize, set and get 1b elements: " << ms << "ms" << std::endl;
+}
+
 void __do_all_tests(){
     __prime_sieve_test();
     __resize_test();
-
+    __capacity_test();
 }
