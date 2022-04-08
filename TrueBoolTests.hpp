@@ -100,20 +100,25 @@ using namespace std::chrono;
 
 
 void __capacity_test(){
-    TrueBoolArray array = TrueBoolArray(1000000000);
+    int sum = 0;
+    for (int j = 0; j < 10; j++){
+        TrueBoolArray array = TrueBoolArray(500000000);
 
-    auto start_time = clock();
-    for (int i = 0; i < 1000000000; i += 2){
-        array.set(i, true);
-    }
-    for (int i = 0; i < 1000000000; i += 2){
-        assert(array.get(i) == true);
-        assert(array.get(i + 1) == false);
-    }
-    auto stop_time = clock();
-    int ms = duration_cast<milliseconds>(stop_time - start_time).count();
+        auto start_time = clock();
+        for (int i = 0; i < 500000000; i += 2){
+            array.set(i, true);
+        }
+        for (int i = 0; i < 500000000; i += 2){
+            assert(array.get(i) == true);
+            assert(array.get(i + 1) == false);
+        }
+        auto stop_time = clock();
+        int ms = duration_cast<milliseconds>(stop_time - start_time).count();
 
-    std::cout << "Initialize, set and get 1b elements: " << ms << "ms" << std::endl;
+        std::cout << "Initialize, set and get 500m elements: " << ms << "ms" << std::endl;
+        sum += ms;
+    }
+    std::cout << "Average: " << sum/10 << "ms" << std::endl;
 }
 
 void __do_all_tests(){
