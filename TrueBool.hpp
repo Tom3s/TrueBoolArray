@@ -4,10 +4,10 @@
 #include <stdlib.h>
 #include <stdexcept>
 
-#define eight 8
-#define true_index index / eight
-#define bit_place index % eight
-#define current this->bitfield[true_index]
+#define __eight 8
+#define __true_index index / __eight
+#define __bit_place index % __eight
+#define __current this->bitfield[__true_index]
 
 TrueBoolArray::TrueBoolArray(cont_size size){
     this->size = size;
@@ -56,13 +56,13 @@ bool TrueBoolArray::get(cont_size index){
     if (index < 0 || index >= this->size){
         throw std::out_of_range("Index outside of range while trying to retrieve data");
     }
-    return (current >> bit_place) & 0b1;
+    return (__current >> __bit_place) & 0b1;
 }
 void TrueBoolArray::set(cont_size index, bool new_value){
     if (index < 0 || index >= this->size){
         throw std::out_of_range("Index outside of range while trying to set data");
     }
-    current ^= (-new_value ^ current) & (0b1 << bit_place);
+    __current ^= (-new_value ^ __current) & (0b1 << __bit_place);
 }
 
 TrueBoolArray::~TrueBoolArray(){
