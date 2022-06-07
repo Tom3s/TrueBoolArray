@@ -103,7 +103,7 @@ using namespace std::chrono;
 void __capacity_test(){
     // int sum = 0;
     // for (int j = 0; j < 10; j++){
-        int subject_size = 10000000;
+        int subject_size = 50000000;
 
         TrueBoolArray array = TrueBoolArray(subject_size);
 
@@ -122,40 +122,41 @@ void __capacity_test(){
         //sum += ms;
         
         
-        
-        bool* array2 = new bool[subject_size];
+        if (false){
+            bool* array2 = new bool[subject_size];
 
-        start_time = clock();
-        for (int i = 0; i < subject_size; i += 2){
-            array2[i] = true;
-            array2[i + 1] = false;
-        }
-        for (int i = 0; i < subject_size; i += 2){
-            assert(array2[i] == true);
-            assert(array2[i + 1] == false);
-        }
-        stop_time = clock();
-        ms = duration_cast<milliseconds>(stop_time - start_time).count();
+            start_time = clock();
+            for (int i = 0; i < subject_size; i += 2){
+                array2[i] = true;
+                array2[i + 1] = false;
+            }
+            for (int i = 0; i < subject_size; i += 2){
+                assert(array2[i] == true);
+                assert(array2[i + 1] == false);
+            }
+            stop_time = clock();
+            ms = duration_cast<milliseconds>(stop_time - start_time).count();
 
-        std::cout << "Initialize, set and get 5m elements: " << ms << "ms" << std::endl;
-        delete[] array2;
-        
-        
-        std::vector<bool> array3(subject_size, false);
+            std::cout << "Initialize, set and get 5m elements: " << ms << "ms" << std::endl;
+            delete[] array2;
+            
+            
+            std::vector<bool> array3(subject_size, false);
 
-        start_time = clock();
-        for (int i = 0; i < subject_size; i += 2){
-            array3[i] = true;
-            array3[i + 1] = false;
-        }
-        for (int i = 0; i < subject_size; i += 2){
-            assert(array3[i] == true);
-            assert(array3[i + 1] == false);
-        }
-        stop_time = clock();
-        ms = duration_cast<milliseconds>(stop_time - start_time).count();
+            start_time = clock();
+            for (int i = 0; i < subject_size; i += 2){
+                array3[i] = true;
+                array3[i + 1] = false;
+            }
+            for (int i = 0; i < subject_size; i += 2){
+                assert(array3[i] == true);
+                assert(array3[i + 1] == false);
+            }
+            stop_time = clock();
+            ms = duration_cast<milliseconds>(stop_time - start_time).count();
 
-        std::cout << "Initialize, set and get 5m elements: " << ms << "ms" << std::endl;
+            std::cout << "Initialize, set and get 5m elements: " << ms << "ms" << std::endl;
+        }
         //sum += ms;
     // }
     // std::cout << "Average: " << sum/10 << "ms" << std::endl;
