@@ -1,6 +1,8 @@
 #pragma once
 
 typedef unsigned char bitf;
+typedef unsigned long long cont_size;
+typedef unsigned long long Index;
 
 class TrueBoolArray {
     private:
@@ -8,12 +10,12 @@ class TrueBoolArray {
         int size;
         
     public:
-        TrueBoolArray(int size);
-        TrueBoolArray(int new_size, bool initial_value);
+        TrueBoolArray(cont_size size);
+        TrueBoolArray(cont_size new_size, bool initial_value);
         int get_size();
-        void resize(int new_size);
-        bool get(int index);
-        void set(int index, bool new_value);
+        void resize(cont_size new_size);
+        bool get(Index index);
+        void set(Index index, bool new_value);
         ~TrueBoolArray();
 };
 
