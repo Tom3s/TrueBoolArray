@@ -16,6 +16,9 @@ int main(){
     // Initialize, set and get 5m elements: 2328ms - Vector
 
     // Initialize, set and get 5m elements: 411ms - bitwise
+    // Initialize, set and get 5m elements: 377ms - bitwise, less allocation
+    // Initialize, set and get 5m elements: 318ms - bitwise, least allocation
+
 
     return 0;
 }
