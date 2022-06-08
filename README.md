@@ -11,8 +11,8 @@ To use this data structure, download the repository and include the header file
 
 ### Jump to:
 - [TrueBoolArray()](#constructor)
-- [.size(), .resize()](#size,-resize)
-- [.get(), .set()](#getter,-setter)
+- [.size(), .resize()](#size-resize)
+- [.get(), .set()](#getter-setter)
 - [~TrueBoolArray()](#destructor)
 - [Test Results](#est-results)
 
