@@ -1,5 +1,7 @@
 #pragma once
 
+#define __TRUEBOOL_H__
+
 typedef unsigned char bitf;
 typedef unsigned long long cont_size;
 typedef unsigned long long Index;
