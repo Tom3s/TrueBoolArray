@@ -7,8 +7,8 @@ typedef unsigned long long Index;
 class TrueBoolArray {
     public:
         TrueBoolArray(cont_size size);
-        TrueBoolArray(cont_size new_size, bool initial_value);
-        int get_size();
+        TrueBoolArray(cont_size size, bool initial_value);
+        cont_size get_size();
         void resize(cont_size new_size);
         bool get(Index index);
         void set(Index index, bool new_value);

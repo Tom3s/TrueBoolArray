@@ -75,7 +75,7 @@ void TrueBoolArray::resize(cont_size new_size){
  * 
  * @return the current capacity of the array -> int
  */
-int TrueBoolArray::get_size(){
+cont_size TrueBoolArray::get_size(){
     return this->size;
 }
 
