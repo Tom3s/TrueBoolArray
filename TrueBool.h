@@ -16,7 +16,7 @@ class TrueBoolArray {
     
     private:
         bitf* bitfield;
-        int size;
+        cont_size size;
 };
 
 #include "TrueBool.hpp"
