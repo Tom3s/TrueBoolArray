@@ -10,11 +10,11 @@ To use this data structure, download the repository and include the header file
 ## Members
 
 ### Jump to:
-- [TrueBoolArray()](###Constructor)
-- [.size(), .resize()](###Size,-resize)
-- [.get(), .set()](###Getter,-setter)
-- [~TrueBoolArray()](###Destructor)
-- [Test Results](###Test-results)
+- [TrueBoolArray()](###constructor)
+- [.size(), .resize()](###size,-resize)
+- [.get(), .set()](###getter,-setter)
+- [~TrueBoolArray()](###destructor)
+- [Test Results](###test-results)
 
 
 > ### Constructor
