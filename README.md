@@ -14,7 +14,7 @@ To use this data structure, download the repository and include the header file
 - [.size(), .resize()](#size-resize)
 - [.get(), .set()](#getter-setter)
 - [~TrueBoolArray()](#destructor)
-- [Test Results](#est-results)
+- [Test Results](#test-results)
 
 
 > ### Constructor
