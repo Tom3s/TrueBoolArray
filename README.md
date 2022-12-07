@@ -99,7 +99,7 @@ To use this data structure, download the repository and include the header file
 >   array.set(i, false);
 > }
 > // array: [0101 0101 0100 0000]
-> //                     ^^ ^^^^ - all elements after index 11 set to false
+> //                      ^ ^^^^ - all elements after index 11 set to false
 > ...
 > ```
 > 
