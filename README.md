@@ -37,7 +37,7 @@ To use this data structure, download the repository and include the header file
 > - **get_size()** -> unsigned int64: returns the _current capacity_ of the array 
 > ```cpp
 > TrueBoolArray array1(16, true);
-> std::cout << "Size of 'array1': " << array.size, << array.resize() << std::endl;
+> std::cout << "Size of 'array1': " << array.size() << std::endl;
 > // this will print 16
 >
 > TrueBoolArray array2(32, false);
